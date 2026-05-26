@@ -1,0 +1,19 @@
+[
+  {
+    "id": "q-chapter1-0001",
+    "domainId": "chapter-1",
+    "syllabusRef": "第1章 サンプル",
+    "level": 1,
+    "free": true,
+    "question": "サンプル問題: TODO で実際の問題に置き換えてください。",
+    "options": [
+      "選択肢A",
+      "選択肢B",
+      "選択肢C",
+      "選択肢D"
+    ],
+    "correctIndex": 0,
+    "explanation": "解説: TODO で実際の解説に置き換えてください。",
+    "tags": ["sample"]
+  }
+]

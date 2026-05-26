@@ -1,0 +1,45 @@
+{
+  // {{SITE_NAME}} — Cloudflare Worker 設定
+  // テンプレート利用手順は TEMPLATE_README.md を参照
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "{{WORKER_NAME}}",
+  "main": "src/worker/index.ts",
+  "compatibility_date": "2025-05-01",
+  // workers.dev / Preview URLs を明示的に無効化（重複コンテンツ防止・SEO 観点）
+  // 詳細: ~/.claude/docs/CLOUDFLARE_DOMAIN_BEST_PRACTICE.md
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  // KV Namespace（セッション + プラン + paid_email + Contact rate limit を統合）
+  // セットアップ: npx wrangler kv namespace create AUTH_SESSIONS
+  // → 出力された id を下記に貼り付け
+  "kv_namespaces": [
+    {
+      "binding": "AUTH_SESSIONS",
+      "id": "{{KV_NAMESPACE_ID}}"
+    }
+  ],
+  // 環境変数（非機密のみ。機密は wrangler secret put で別途登録）
+  "vars": {
+    "APP_ORIGIN": "https://{{DOMAIN}}",
+    "STRIPE_PRICE_ID_ONETIME": "{{STRIPE_PRICE_ID}}",
+    "TURNSTILE_SITE_KEY": "{{TURNSTILE_SITE_KEY}}",
+    "CONTACT_TO_EMAIL": "{{CONTACT_EMAIL}}",
+    "CONTACT_FROM_EMAIL": "noreply@{{DOMAIN}}"
+  },
+  // Secrets — セットアップ時に下記コマンドで個別登録:
+  //   npx wrangler secret put GOOGLE_CLIENT_ID
+  //   npx wrangler secret put GOOGLE_CLIENT_SECRET
+  //   npx wrangler secret put STRIPE_SECRET_KEY  (rk_live_... 制限付きキー推奨)
+  //   npx wrangler secret put STRIPE_WEBHOOK_SECRET
+  //   npx wrangler secret put TURNSTILE_SECRET
+  //   npx wrangler secret put RESEND_API_KEY
+  "observability": {
+    "enabled": true
+  }
+}

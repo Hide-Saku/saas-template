@@ -1,0 +1,37 @@
+# Secrets
+.env
+.env.local
+.env.*.local
+.dev.vars
+
+# OAuth credentials
+client_secret*.json
+*-credentials.json
+service-account*.json
+
+# Keys
+*.pem
+*.key
+*.p12
+
+# Node
+node_modules/
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# Wrangler
+.wrangler/
+
+# Reports — 中間ログは除外、確定レポートはコミット可
+reports/_*.log
+reports/_*.json
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# KV backups (個人情報を含むため非公開)
+backups/
