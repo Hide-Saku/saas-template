@@ -30,7 +30,7 @@ export interface Env {
   STRIPE_SECRET_KEY: string;
   STRIPE_WEBHOOK_SECRET: string;
   STRIPE_PRICE_ID_ONETIME: string;
-  APP_ORIGIN: string; // 例: "https://ds-kentei-lab.com"
+  APP_ORIGIN: string; // 例: "https://{{DOMAIN}}"
   // お問い合わせ用（任意・未設定なら /api/contact は 503）
   TURNSTILE_SECRET?: string;
   TURNSTILE_SITE_KEY?: string; // フロント用にvars経由でも公開可

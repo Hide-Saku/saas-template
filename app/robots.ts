@@ -29,6 +29,6 @@ export default function robots(): MetadataRoute.Robots {
       ...AI_CRAWLERS.map((ua) => ({ userAgent: ua, disallow: "/" })),
       { userAgent: "*", allow: "/", disallow: ["/api/", "/account/", "/login/"] },
     ],
-    sitemap: "https://ds-kentei-lab.com/sitemap.xml",
+    sitemap: "https://{{DOMAIN}}/sitemap.xml",
   };
 }

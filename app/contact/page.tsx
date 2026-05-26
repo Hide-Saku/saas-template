@@ -3,10 +3,10 @@
 import Header from "@/components/Header";
 import { useState, useEffect, useRef } from "react";
 
-// Cloudflare Turnstile の site key（公開情報・ds-kentei-lab Contact widget）
-// 視覚確認: A は 6 個（合計 24 文字）
-const TURNSTILE_SITE_KEY = "0x4AAAAAADVP11wqEwdnPhOA";
-const TURNSTILE_ENABLED = !TURNSTILE_SITE_KEY.startsWith("PLACEHOLDER");
+// Cloudflare Turnstile の site key (公開情報)
+// TODO: テンプレ利用側で本番 site key に置換 ("0x4AAAA..." 24 文字)
+const TURNSTILE_SITE_KEY = "{{TURNSTILE_SITE_KEY}}";
+const TURNSTILE_ENABLED = !TURNSTILE_SITE_KEY.startsWith("{{");
 
 declare global {
   interface Window {

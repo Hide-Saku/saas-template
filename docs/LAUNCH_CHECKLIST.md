@@ -57,12 +57,12 @@
 - [ ] KV Namespace ID が `wrangler.jsonc` で本番のもの
 - [ ] DNS は Cloudflare 管理（DNS only ではなく Proxied 推奨）
 - [ ] **www → apex の 301 リダイレクト設定**
-  - Cloudflare Dashboard → `ds-kentei-lab.com` → Rules → Redirect Rules → Create rule
+  - Cloudflare Dashboard → `{{DOMAIN}}` → Rules → Redirect Rules → Create rule
   - Rule name: `Redirect www to apex`
-  - Field: `Hostname` / Operator: `equals` / Value: `www.ds-kentei-lab.com`
-  - Type: `Dynamic` / Expression: `concat("https://ds-kentei-lab.com", http.request.uri.path)`
+  - Field: `Hostname` / Operator: `equals` / Value: `www.{{DOMAIN}}`
+  - Type: `Dynamic` / Expression: `concat("https://{{DOMAIN}}", http.request.uri.path)`
   - Status code: `301` / Preserve query string: ON
-  - 確認: `curl.exe -I https://www.ds-kentei-lab.com` → `HTTP/2 301` + `Location: https://ds-kentei-lab.com/`
+  - 確認: `curl.exe -I https://www.{{DOMAIN}}` → `HTTP/2 301` + `Location: https://{{DOMAIN}}/`
   - 参照: `~/.claude/docs/CLOUDFLARE_DOMAIN_BEST_PRACTICE.md`
   - （SEO 重複コンテンツ防止。G検定研究室・生成AIパス研究室は 2026-05-24 に対応済み）
 
